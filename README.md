@@ -38,7 +38,7 @@ or
 Clone the repo:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/pacguard.git
+git clone https://github.com/blackXploit-404/pacguard.git
 cd pacguard
 ````
 
