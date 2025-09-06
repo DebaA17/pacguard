@@ -122,5 +122,3 @@ MIT License. See the `LICENSE` file.
 This is a small project, nothing fancy — just a Python script that scratches an itch.
 I know it’s simple, but I wanted to package it up for the community. If it helps even one other Arch user, I’ll call that a win.
 
-```
-
