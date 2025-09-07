@@ -1,3 +1,12 @@
+
+<a href="https://www.star-history.com/#blackXploit-404/pacguard&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=blackXploit-404/pacguard&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=blackXploit-404/pacguard&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=blackXploit-404/pacguard&type=Date" />
+ </picture>
+</a>
+
 # pacguard
 
 Meet **pacguard** — yes, it's pacman with a guard.  
