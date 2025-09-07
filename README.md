@@ -1,4 +1,6 @@
 
+![pacguard-icon](images/icon-without-bg.png)
+
 <a href="https://www.star-history.com/#blackXploit-404/pacguard&Date">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=blackXploit-404/pacguard&type=Date&theme=dark" />
