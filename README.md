@@ -1,5 +1,7 @@
 
-![pacguard-icon](images/icon-without-bg.png)
+<p align="center">
+  <img src="images/icon-with-bg.png" alt="pacguard-icon" />
+</p>
 
 <a href="https://www.star-history.com/#blackXploit-404/pacguard&Date">
  <picture>
