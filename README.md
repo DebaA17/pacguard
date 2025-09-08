@@ -140,6 +140,13 @@ I know it’s simple, but I wanted to package it up for the community. If it hel
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://surajitsen.live"><img src="https://avatars.githubusercontent.com/u/143313960?v=4?s=100" width="100px;" alt="Surajit Sen"/><br /><sub><b>Surajit Sen</b></sub></a><br /><a href="https://github.com/blackXploit-404/pacguard/commits?author=blackXploit-404" title="Code">💻</a> <a href="https://github.com/blackXploit-404/pacguard/commits?author=blackXploit-404" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
