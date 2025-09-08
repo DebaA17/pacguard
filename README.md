@@ -135,3 +135,15 @@ MIT License. See the `LICENSE` file.
 This is a small project, nothing fancy — just a Python script that scratches an itch.
 I know it’s simple, but I wanted to package it up for the community. If it helps even one other Arch user, I’ll call that a win.
 
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+[![All Contributors](https://img.shields.io/github/all-contributors/projectOwner/projectName?color=ee8449&style=flat-square)](#contributors)

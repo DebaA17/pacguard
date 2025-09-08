@@ -1,0 +1,11 @@
+{
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [],
+  "projectName": "pacguard",
+  "projectOwner": "blackXploit-404",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
