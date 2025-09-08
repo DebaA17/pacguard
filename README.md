@@ -145,6 +145,7 @@ I know it’s simple, but I wanted to package it up for the community. If it hel
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://surajitsen.live"><img src="https://avatars.githubusercontent.com/u/143313960?v=4?s=100" width="100px;" alt="Surajit Sen"/><br /><sub><b>Surajit Sen</b></sub></a><br /><a href="https://github.com/blackXploit-404/pacguard/commits?author=blackXploit-404" title="Code">💻</a> <a href="https://github.com/blackXploit-404/pacguard/commits?author=blackXploit-404" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://debasisbiswas.me"><img src="https://avatars.githubusercontent.com/u/185465407?v=4?s=100" width="100px;" alt="DEBASIS BISWAS"/><br /><sub><b>DEBASIS BISWAS</b></sub></a><br /><a href="https://github.com/blackXploit-404/pacguard/commits?author=DebaA17" title="Code">💻</a> <a href="#ideas-DebaA17" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/apps/imgbot"><img src="https://avatars.githubusercontent.com/in/4706?v=4?s=100" width="100px;" alt="imgbot[bot]"/><br /><sub><b>imgbot[bot]</b></sub></a><br /><a href="#infra-imgbot[bot]" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     </tr>
   </tbody>
 </table>
