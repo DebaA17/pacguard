@@ -126,7 +126,9 @@ No vulnerable packages detected.
 
 ## License
 
-MIT License. See the `LICENSE` file.
+## License
+
+MIT License. See the [LICENSE](LICENSE) file.
 
 ---
 
