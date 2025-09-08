@@ -4,9 +4,12 @@ Checks installed packages against Arch Security Tracker JSON feed.
 
 """
 
+
 import requests
-import pyalpm  # for vesion comparison 
+import pyalpm  # for version comparison
 import sys
+import argparse
+import os
 
 ARCH_JSON_URL = "https://security.archlinux.org/json"
 
@@ -15,12 +18,20 @@ RED = "\033[91m"
 YELLOW = "\033[93m"
 GREEN = "\033[92m"
 RESET = "\033[0m"
+VERSION = "1.0.0"
+
+def colorize(text, color, use_color=True):
+    return f"{color}{text}{RESET}" if use_color else text
 
 def get_installed_packages():
     """Return dict {name: version} of installed packages."""
-    handle = pyalpm.Handle("/", "/var/lib/pacman")
-    localdb = handle.get_localdb()
-    return {pkg.name: pkg.version for pkg in localdb.pkgcache}
+    try:
+        handle = pyalpm.Handle("/", "/var/lib/pacman")
+        localdb = handle.get_localdb()
+        return {pkg.name: pkg.version for pkg in localdb.pkgcache}
+    except Exception as e:
+        print(colorize(f"[!] Failed to access pacman database: {e}", RED))
+        sys.exit(1)
 
 def load_security_data():
     """Download Arch Security Tracker JSON."""
@@ -29,7 +40,7 @@ def load_security_data():
         r.raise_for_status()
         return r.json()
     except Exception as e:
-        print(f"{RED}[!] Failed to fetch security data: {e}{RESET}")
+        print(colorize(f"[!] Failed to fetch security data: {e}", RED))
         sys.exit(1)
 
 def is_vulnerable(installed, affected, fixed):
@@ -39,30 +50,54 @@ def is_vulnerable(installed, affected, fixed):
     """
     if affected and installed in affected:
         return True
-
     if fixed:
-        
         if pyalpm.vercmp(installed, fixed[0]) < 0:
             return True
-
     return False
 
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Check installed packages against Arch Security Tracker for known vulnerabilities."
+    )
+    parser.add_argument("--no-color", action="store_true", help="Disable colored output.")
+    parser.add_argument("--version", action="store_true", help="Show version and exit.")
+    return parser.parse_args()
+
+def print_vulnerabilities(vulnerable, use_color=True):
+    if not vulnerable:
+        print(colorize("\nNo vulnerable packages detected.", GREEN, use_color))
+        return
+    print(colorize("\nVulnerable packages found:\n", RED, use_color))
+    for v in vulnerable:
+        print(f"- {v['pkg']} (installed {v['installed']})")
+        print(f"  Advisory: {v['advisory']}")
+        print(f"  Affected: {v['affected']}")
+        print(f"  Fixed: {v['fixed'] or 'Not yet fixed'}")
+        print(f"  Severity: {v['severity']}")
+        print(f"  CVEs: {', '.join(v['cves']) if v['cves'] else 'N/A'}")
+        if v['fixed']:
+            print(f"  Suggested fix: {colorize('sudo pacman -Syu ' + v['pkg'], GREEN, use_color)}\n")
+        else:
+            print(f"  {colorize('Suggested action: No fixed version yet. Monitor Arch tracker.', YELLOW, use_color)}\n")
+
 def main():
+    args = parse_args()
+    use_color = not args.no_color and sys.stdout.isatty() and os.environ.get("TERM") != "dumb"
+    if args.version:
+        print(f"pacguard version {VERSION}")
+        sys.exit(0)
     print("[*] Collecting installed packages...")
     installed_pkgs = get_installed_packages()
-
     print("[*] Fetching Arch Security Tracker data...")
     secdata = load_security_data()
-
     vulnerable = []
-
     for advisory in secdata:
         packages = advisory.get("packages", [])
         affected = advisory.get("affected") or []
         fixed = advisory.get("fixed") or []
         cves = advisory.get("issues", [])
         severity = advisory.get("severity", "Unknown")
-
         for pkg in packages:
             if pkg in installed_pkgs:
                 inst_ver = installed_pkgs[pkg]
@@ -76,24 +111,7 @@ def main():
                         "severity": severity,
                         "advisory": advisory.get("name")
                     })
-
-    if not vulnerable:
-        print(f"\n{GREEN} No vulnerable packages detected.{RESET}")
-        return
-
-    print(f"\n{RED} Vulnerable packages found:{RESET}\n")
-    for v in vulnerable:
-        print(f"- {v['pkg']} (installed {v['installed']})")
-        print(f"  Advisory: {v['advisory']}")
-        print(f"  Affected: {v['affected']}")
-        print(f"  Fixed: {v['fixed'] or 'Not yet fixed'}")
-        print(f"  Severity: {v['severity']}")
-        print(f"  CVEs: {', '.join(v['cves']) if v['cves'] else 'N/A'}")
-
-        if v['fixed']:
-            print(f"  Suggested fix: {GREEN}sudo pacman -Syu {v['pkg']}{RESET}\n")
-        else:
-            print(f"  {YELLOW}Suggested action: No fixed version yet. Monitor Arch tracker.{RESET}\n")
+    print_vulnerabilities(vulnerable, use_color)
 
 if __name__ == "__main__":
     main()
