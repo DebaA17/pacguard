@@ -1,11 +1,26 @@
 {
-  "files": ["README.md"],
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
   "commit": true,
   "commitConvention": "angular",
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "blackXploit-404",
+      "name": "Surajit Sen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/143313960?v=4",
+      "profile": "http://surajitsen.live",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
   "projectName": "pacguard",
   "projectOwner": "blackXploit-404",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "commitType": "docs",
+  "contributorsPerLine": 7
 }
